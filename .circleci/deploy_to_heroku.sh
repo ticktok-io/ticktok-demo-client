@@ -21,7 +21,7 @@ if [ ${CIRCLE_BRANCH} == "master" ]; then
     docker tag app $IMAGE
     docker push $IMAGE
     echo $IMAGE deployed to heroku
-    heroku _
+    heroku releases web
     check_health https://$HEROKU_APP.herokuapp.com
 else
     echo No deployment from $CIRCLE_BRANCH branch
