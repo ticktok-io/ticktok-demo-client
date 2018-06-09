@@ -14,7 +14,7 @@ check_health() {
 }
 
 
-if [ ${CIRCLE_BRANCH} == "master" ] then
+if [ ${CIRCLE_BRANCH} == "master" ]; then
     IMAGE=$HEROKU/$HEROKU_APP/web
     echo $(heroku auth:token) | docker login --username=_ --password-stdin $HEROKU
     echo image: $IMAGE
