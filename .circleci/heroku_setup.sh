@@ -2,7 +2,7 @@
 
 set -e
 
-npm install -g heroku
+sudo npm install -g heroku
 
 # wget https://cli-assets.heroku.com/branches/stable/heroku-linux-amd64.tar.gz
 # sudo mkdir -p /usr/local/lib /usr/local/bin
