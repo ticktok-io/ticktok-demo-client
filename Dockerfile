@@ -4,6 +4,6 @@ ADD . /opt/app
 
 WORKDIR /opt/app
 
-RUN npm install
+RUN npm install --unsafe-perm
 
 CMD node ./bin/www
