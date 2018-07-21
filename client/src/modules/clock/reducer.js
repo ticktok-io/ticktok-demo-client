@@ -1,4 +1,4 @@
-import { NEW_CLOCK } from './actions';
+import {NEW_CLOCK} from './actions';
 
 export default function (state = [], action) {
   switch (action.type) {
@@ -6,7 +6,8 @@ export default function (state = [], action) {
       if (action.payload.data) {
         return [action.payload.data, ...state];
       }
+      return state;
+    default:
+      return state;
   }
-
-  return state;
 }

@@ -1,17 +1,19 @@
-td, th {
-    vertical-align: middle !important;
-    text-align: center !important;
+.container {
+    margin: 0;
+    width: 100%;
+    max-width: unset;
+    padding: 0;
+}
+
+.nav {
+    display:table;
+    width:100%;
+    margin: 0;
 }
 
 .input-group {
     margin: 50px 0;
+    width: 100%;
 }
 
-svg {
-    height: 150px;
-}
 
-td:first-of-type, td:first-of-type > div {
-    height: 200px;
-    width: 250px;
-}

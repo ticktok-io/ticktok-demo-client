@@ -1,48 +1,41 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { registerClock } from './actions';
+import React, {Component} from 'react';
+import {Field, reduxForm} from 'redux-form';
+import {connect} from 'react-redux';
+import {createClock} from './actions';
 
 
 class ClockCreator extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = { schedule: '' };
-    this.onInputChange = this.onInputChange.bind(this);
-    this.onFormSubmit = this.onFormSubmit.bind(this);
-  }
-
-  onFormSubmit(event) {
-    event.preventDefault();
-    this.props.fetchWeather(this.state.schedule);
-    this.setState({ schedule: '' });
-  }
-
-  onInputChange(event) {
-    this.setState({ schedule: event.target.value });
-  }
-
   render() {
+    const {handleSubmit} = this.props;
     return (
-      <form onSubmit={this.onFormSubmit} className="input-group">
-        <input
-          placeholder="Enter a valid schedule"
-          className="form-control"
-          value={this.state.schedule}
-          onChange={this.onInputChange}
-        />
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))} className="input-group">
+        <Field name="schedule" label="Enter clock schedule" component={this.renderField}/>
         <span className="input-group-btn">
-          <button type="submit" className="btn btn-secondary">Create</button>
-        </span>
+            <button type="submit" className="btn btn-primary">Submit</button>
+          </span>
       </form>
+    );
+  }
+
+  onSubmit(values) {
+    this.props.createClock(values);
+  }
+
+  renderField(field) {
+    return (
+      <div className="form-group">
+        <input
+          className="form-control"
+          placeholder={field.label}
+          type="text"
+          {...field.input}
+        />
+      </div>
     );
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchWeather: registerClock }, dispatch);
-}
-
-export default connect(null, mapDispatchToProps)(ClockCreator);
+export default reduxForm({
+  form: 'CreateClockForm'
+})(connect(null, {createClock})(ClockCreator));
