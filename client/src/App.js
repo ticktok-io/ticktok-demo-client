@@ -7,11 +7,7 @@ class App extends Component {
       <div>
         <div className="pos-f-t">
           <nav className="navbar navbar-dark bg-dark">
-            <button className="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
               <h4>Ticktok.io playground</h4>
-            </button>
           </nav>
         </div>
         < div>
