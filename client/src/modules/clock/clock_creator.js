@@ -12,7 +12,7 @@ class ClockCreator extends Component {
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}
             className="form-inline justify-content-center">
         <div className="form-group">
-          <Field name="schedule" label="Enter clock schedule" component={this.renderField}/>
+          <Field className="schedule-input" name="schedule" label="Enter clock schedule" component={this.renderField}/>
         </div>
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>
@@ -20,7 +20,7 @@ class ClockCreator extends Component {
   }
 
   onSubmit(values) {
-    this.props.createClock(values);
+    this.props.createClock(this.props.appKey, values);
   }
 
   renderField(field) {

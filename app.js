@@ -4,7 +4,8 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 
-let mgmtRouter = require('./routes/mgmt');
+let clocksRouter = require('./src/clock/clock_routes');
+let mgmtRouter = require('./src/mgmt/mgmt');
 
 let app = express();
 
@@ -19,9 +20,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.use('/mgmt', mgmtRouter);
+app.use('/api/clocks', clocksRouter);
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname + '/client/build/index.html'));
+  res.sendFile(path.join(__dirname + 'client/build/index.html'));
 });
 
 

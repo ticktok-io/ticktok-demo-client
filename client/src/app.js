@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import ClockCreator from "./modules/clock/clock_creator";
 
 class App extends Component {
   render() {
+    const key = new URLSearchParams(this.props.location.search).get('key');
     return (
       <div>
         <div className="pos-f-t">
@@ -11,11 +13,11 @@ class App extends Component {
           </nav>
         </div>
         < div>
-          <ClockCreator/>
+          <ClockCreator appKey={key}/>
         </div>
       </div>
     );
   }
 }
 
-export default App;
+export default connect(null)(App);
