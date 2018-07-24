@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Route} from 'react-router-dom';
 import ReduxPromise from 'redux-promise'
 
 import App from './app';
@@ -17,5 +17,5 @@ ReactDOM.render(
       <Route path="/" component={App}/>
     </BrowserRouter>
   </Provider>
-  , document.querySelector('.container'));
+  ,document.querySelector('.container'));
 

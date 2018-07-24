@@ -1,5 +1,10 @@
+import {FETCH_TICKS} from "./actions";
+
+
 export default function (state = [], action) {
   switch (action.type) {
+    case FETCH_TICKS:
+      return state.concat(action.payload.data);
     default:
       return state;
   }

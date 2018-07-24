@@ -5,6 +5,7 @@ let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 
 let clocksRouter = require('./src/clock/clock_routes');
+let ticksRouter = require('./src/tick/tick_routes');
 let mgmtRouter = require('./src/mgmt/mgmt');
 
 let app = express();
@@ -21,6 +22,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.use('/mgmt', mgmtRouter);
 app.use('/api/clocks', clocksRouter);
+app.use('/api/ticks', ticksRouter);
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname + 'client/build/index.html'));

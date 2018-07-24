@@ -1,17 +1,22 @@
 let express = require('express');
 let router = express.Router();
 let axios = require('axios');
+let tick = require('../tick/tick_listener.js');
 
-const CLOCKS_PATH = 'https://ticktok-io-dev.herokuapp.com/v1/clocks?access_token=';
+const CLOCKS_PATH = 'https://ticktok-io-dev.herokuapp.com/api/v1/clocks?access_token=';
 
 router.post('/', function (req, res, next) {
-  axios.post(`${CLOCKS_PATH}${req.body.key}`, {schedule: req.body.schedule})
+  const url = `${CLOCKS_PATH}${req.body.key}`;
+  console.log(url);
+  axios.post(url, {schedule: req.body.schedule})
     .then(response => {
-      res.send(201);
+      const { channel } = response.data;
+      tick.listen(channel.uri, channel.topic, channel.exchange);
+      res.sendStatus(201);
     })
     .catch(error => {
       console.log(error);
-      res.send(500);
+      res.sendStatus(500);
     });
 });
 

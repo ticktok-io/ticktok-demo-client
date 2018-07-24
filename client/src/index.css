@@ -17,17 +17,24 @@ nav h4 {
 
 .form-inline {
     margin-top: 30px;
+    justify-content: center;
 }
 
-.form-group {
-    width: 70%
-}
 
-.form-group .form-group {
+input {
     width: 100%;
 }
 
-.form-group .form-group input {
-    width: 100%;
+.main {
+    width: 80%;
+    margin: auto;
 }
 
+form {
+    margin-top: 30px;
+}
+
+textarea {
+    width: 100%;
+    height: 500px;
+}

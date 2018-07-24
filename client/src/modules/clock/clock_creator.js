@@ -9,12 +9,13 @@ class ClockCreator extends Component {
   render() {
     const {handleSubmit} = this.props;
     return (
-      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}
-            className="form-inline justify-content-center">
-        <div className="form-group">
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+        <div className="input-group mb-3">
           <Field className="schedule-input" name="schedule" label="Enter clock schedule" component={this.renderField}/>
+          <div className="input-group-append">
+            <button className="btn btn-primary" type="submit">Submit</button>
+          </div>
         </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
       </form>
     );
   }
@@ -25,14 +26,10 @@ class ClockCreator extends Component {
 
   renderField(field) {
     return (
-      <div className="form-group">
-        <input
-          className="form-control"
-          placeholder={field.label}
-          type="text"
-          {...field.input}
-        />
-      </div>
+      <input type="text" className="form-control" placeholder="Enter a clock schedule"
+             aria-label="Schedule" aria-describedby="basic-addon2"
+             {...field.input}
+      />
     );
   }
 }
