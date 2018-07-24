@@ -10,7 +10,7 @@ class TicksShow extends Component {
 
   _tick = () => {
     const { ticks } = this.props;
-    if(ticks && ticks.length > 0) {
+    if(ticks) {
       this.props.fetchTicks(ticks.length);
     }
   };
